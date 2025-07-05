@@ -7,160 +7,52 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        secondary: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            300: '#c4b5fd',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            700: '#6d28d9',
-                            800: '#5b21b6',
-                            900: '#4c1d95',
-                        }
-                    },
-                    fontFamily: {
-                        'cairo': ['Cairo', 'sans-serif'],
-                        'tajawal': ['Tajawal', 'sans-serif']
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
-                        'hard': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-                    }
-                }
-            }
-        }
-    </script>
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Google Fonts: Cairo & Tajawal -->
+    <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
         /* Custom styles */
         body {
-            font-family: 'Tajawal', 'Cairo', sans-serif;
+            font-family: 'Cairo', sans-serif;
             scroll-behavior: smooth;
-            background-color: #f8fafc;
         }
-        
         .card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-right: 4px solid transparent; /* Changed from border-left for RTL */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-right-color: #0ea5e9; /* Changed from border-left for RTL */
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
-        
         .method-tag {
             font-size: 0.75rem;
-            padding: 4px 10px;
+            padding: 2px 8px;
             border-radius: 9999px;
-            font-weight: 700;
-            letter-spacing: 0.025em;
+            font-weight: 600;
             flex-shrink: 0;
         }
-        
         .tag-p {
-            background-color: #e0f2fe;
-            color: #075985;
+            background-color: #e0f2fe; /* light-blue-100 */
+            color: #0c4a6e; /* light-blue-800 */
         }
-        
         .tag-a {
-            background-color: #dcfce7;
-            color: #166534;
+            background-color: #dcfce7; /* light-green-100 */
+            color: #166534; /* light-green-800 */
         }
-        
         .tag-pa {
-            background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
-            color: #075985;
-            border: 1px solid #e0f2fe;
+            background-color: #fef3c7; /* light-amber-100 */
+            color: #92400e; /* light-amber-800 */
         }
-        
         .filter-btn.active {
-            background-color: #0ea5e9;
+            background-color: #0891b2; /* cyan-600 */
             color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
-        
-        .search-input:focus {
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
-        }
-        
-        .header-gradient {
-            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .icon-circle {
-            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
-            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3), 0 4px 6px -2px rgba(14, 165, 233, 0.2);
-        }
-        
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem; /* Adjusted for RTL, can be right: 2rem */
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 50;
-        }
-        
-        .scroll-top-btn.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .scroll-top-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .empty-state {
-            background-color: rgba(241, 245, 249, 0.8);
-            backdrop-filter: blur(5px);
-        }
-        
-        .empty-state-icon {
-            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
-        }
-
         .description-list {
             padding-right: 1.5rem;
             list-style: disc;
@@ -168,93 +60,55 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    
-    <!-- Scroll to Top Button -->
-    <button id="scrollTopBtn" class="scroll-top-btn">
-        <i class="fas fa-arrow-up fa-lg"></i>
-    </button>
-    
+
     <!-- Main Container -->
-    <div class="container mx-auto px-4 md:px-8 py-6">
-        
+    <div class="container mx-auto p-4 md:p-8">
+
         <!-- Header Section -->
-        <header class="text-center mb-12">
-            <div class="inline-flex items-center justify-center icon-circle w-20 h-20 rounded-full text-white mb-6">
-                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+        <header class="text-center mb-10">
+            <div class="inline-block bg-cyan-600 text-white p-4 rounded-full shadow-lg mb-4">
+                <i class="fas fa-chalkboard-teacher fa-3x"></i>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold font-cairo mb-3 header-gradient">50 طريقة تعليمية</h1>
-            <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto">
-                دليل شامل ومفصل لأساليب العرض والتطبيق في التصميم التعليمي، مصمم لمساعدة المعلمين والمصممين التعليميين على اختيار أفضل الطرق
-            </p>
+            <h1 class="text-4xl md:text-5xl font-bold text-cyan-800">50 طريقة تعليمية</h1>
+            <p class="text-gray-600 mt-2 text-lg">دليل شامل ومفصل لأساليب العرض والتطبيق في التصميم التعليمي</p>
         </header>
-        
+
         <!-- Search and Filter Section -->
-        <div class="sticky top-0 bg-white/80 backdrop-blur-sm z-10 py-4 mb-8 border-b border-gray-200">
-            <div class="max-w-6xl mx-auto">
-                <div class="flex flex-col md:flex-row gap-4 items-center">
+        <div class="sticky top-0 bg-gray-50/80 backdrop-blur-sm z-10 py-4 mb-8 rounded-lg">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-4">
                     <!-- Search Input -->
-                    <div class="relative flex-grow w-full">
-                        <input type="text" id="searchInput" placeholder="ابحث بالاسم العربي أو الإنجليزي..." 
-                               class="w-full search-input p-3 pl-12 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition text-gray-700">
-                        <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <div class="relative flex-grow">
+                        <input type="text" id="searchInput" placeholder="ابحث عن طريقة محددة..." class="w-full p-3 pr-10 border border-gray-300 rounded-full shadow-sm focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition">
+                        <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
                     </div>
-                    
                     <!-- Filter Buttons -->
-                    <div id="filter-buttons" class="flex items-center justify-center gap-2 flex-wrap w-full md:w-auto">
-                        <button class="filter-btn active px-4 py-2 rounded-xl bg-primary-500 text-white font-medium hover:bg-primary-600 transition flex items-center gap-2" onclick="filterMethods('all')">
-                            <i class="fas fa-layer-group"></i>
-                            الكل
+                    <div id="filter-buttons" class="flex items-center justify-center gap-2">
+                        <button class="filter-btn active px-4 py-2 rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition" onclick="filterMethods('all')">الكل</button>
+                        <button class="filter-btn px-4 py-2 rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition" onclick="filterMethods('P')">
+                            <i class="fas fa-bullhorn text-blue-500 mr-1"></i> عرض
                         </button>
-                        <button class="filter-btn px-4 py-2 rounded-xl bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition flex items-center gap-2" onclick="filterMethods('P')">
-                            <i class="fas fa-bullhorn text-blue-500"></i>
-                            طرق العرض
-                        </button>
-                        <button class="filter-btn px-4 py-2 rounded-xl bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition flex items-center gap-2" onclick="filterMethods('A')">
-                            <i class="fas fa-puzzle-piece text-green-500"></i>
-                            طرق التطبيق
+                        <button class="filter-btn px-4 py-2 rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition" onclick="filterMethods('A')">
+                            <i class="fas fa-puzzle-piece text-green-500 mr-1"></i> تطبيق
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Methods Counter -->
-        <div class="mb-6 flex justify-between items-center">
-            <h2 class="text-xl font-bold text-gray-800">
-                <i class="fas fa-list-check mr-2 text-primary-600"></i>
-                الأساليب المتاحة
-            </h2>
-            <span id="methodsCount" class="text-sm bg-primary-100 text-primary-800 px-3 py-1 rounded-full font-medium">
-                50 طريقة
-            </span>
-        </div>
-        
+
         <!-- Methods Grid -->
-        <div id="methodsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="methodsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Cards will be injected here by JavaScript -->
         </div>
         
         <!-- Not Found Message -->
-        <div id="notFoundMessage" class="empty-state text-center py-16 px-6 rounded-2xl hidden mt-8">
-            <div class="empty-state-icon inline-flex items-center justify-center w-20 h-20 rounded-full mb-6">
-                <i class="fas fa-search fa-2x text-gray-500"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-700 mb-2">لا توجد نتائج</h3>
-            <p class="text-gray-600 max-w-md mx-auto">
-                لم نتمكن من العثور على أي طرق تعليمية تطابق بحثك. حاول استخدام مصطلحات بحث مختلفة.
-            </p>
-            <button onclick="resetSearch()" class="mt-6 px-6 py-2 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition font-medium">
-                <i class="fas fa-undo mr-2"></i>
-                إعادة تعيين البحث
-            </button>
+        <div id="notFoundMessage" class="text-center py-16 hidden">
+             <i class="fas fa-exclamation-circle fa-3x text-gray-400 mb-4"></i>
+             <p class="text-xl text-gray-600">عفواً، لم يتم العثور على نتائج مطابقة لبحثك.</p>
         </div>
-        
-        <!-- Footer -->
-        <footer class="mt-16 pt-8 pb-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-            <p>© 2024 - تم التطوير بواسطة Gemini. جميع الحقوق محفوظة.</p>
-        </footer>
+
     </div>
-    
+
     <script>
         // Data for all 50 instructional methods, translated and detailed
         const methods = [
@@ -309,19 +163,15 @@
             { id: 49, name: 'المجموعة النقابية', englishName: 'Syndicate', type: 'A', icon: 'fa-object-group', description: 'يتم تقسيم المتعلمين إلى مجموعات صغيرة من 3-6 أشخاص لأداء مهمة معينة كفريق واحد.' },
             { id: 50, name: 'ورشة العمل', englishName: 'Workshop', type: 'PA', icon: 'fa-tools', description: 'جلسة تشاركية للغاية تضع تركيزًا أكبر على تطبيق المتعلمين أكثر من عروض القائد. يعمل المتعلمون لإنتاج منتج أو حل مشكلة بتوجيه من القائد.' }
         ];
-        
-        // DOM Elements
+
         const grid = document.getElementById('methodsGrid');
         const searchInput = document.getElementById('searchInput');
         const notFoundMessage = document.getElementById('notFoundMessage');
-        const methodsCount = document.getElementById('methodsCount');
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        
+
         // Function to create a method card
         function createCard(method) {
             const typeTag = method.type.includes('P') && method.type.includes('A') ? 'PA' : method.type;
             let typeLabel, typeClass;
-            
             if (typeTag === 'PA') {
                 typeLabel = 'عرض وتطبيق';
                 typeClass = 'tag-pa';
@@ -332,68 +182,57 @@
                 typeLabel = 'تطبيق';
                 typeClass = 'tag-a';
             }
-            
+
             return `
-                <div class="card bg-white p-6 rounded-xl shadow-soft flex flex-col items-start gap-4" data-name="${method.name}" data-english-name="${method.englishName}" data-type="${method.type}">
+                <div class="card bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col items-start gap-4" data-name="${method.name}" data-english-name="${method.englishName}" data-type="${method.type}">
                     <div class="flex justify-between items-start w-full gap-4">
                         <div class="flex items-start gap-4">
-                            <div class="bg-primary-100 text-primary-600 w-12 h-12 flex items-center justify-center rounded-full flex-shrink-0 mt-1">
+                            <div class="bg-cyan-100 text-cyan-700 w-12 h-12 flex items-center justify-center rounded-full flex-shrink-0 mt-1">
                                 <i class="fas ${method.icon} fa-lg"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold text-gray-800 font-cairo">${method.englishName}</h3>
-                                <p class="text-md text-primary-700 font-semibold">(${method.name})</p>
+                                <h3 class="text-xl font-bold text-gray-800">${method.englishName}</h3>
+                                <p class="text-md text-cyan-700 font-semibold">(${method.name})</p>
                             </div>
                         </div>
                         <span class="method-tag ${typeClass}">${typeLabel}</span>
                     </div>
-                    <div class="text-gray-600 leading-relaxed text-sm">${method.description}</div>
+                    <div class="text-gray-600 leading-relaxed">${method.description}</div>
                 </div>
             `;
         }
-        
+
         // Function to display methods
         function displayMethods(methodsToDisplay) {
             grid.innerHTML = methodsToDisplay.map(createCard).join('');
-            methodsCount.textContent = `${methodsToDisplay.length} طريقة`;
-            
             if(methodsToDisplay.length === 0) {
                 notFoundMessage.classList.remove('hidden');
-                grid.classList.add('hidden');
             } else {
                 notFoundMessage.classList.add('hidden');
-                grid.classList.remove('hidden');
             }
         }
-        
+
         // Initial display
         displayMethods(methods);
-        
+
         // Search functionality
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             const filtered = methods.filter(method => 
                 method.name.toLowerCase().includes(searchTerm) || 
-                method.englishName.toLowerCase().includes(searchTerm) ||
-                method.description.toLowerCase().includes(searchTerm)
+                method.englishName.toLowerCase().includes(searchTerm)
             );
             displayMethods(filtered);
-            
-            // Reset filter buttons to 'all'
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active', 'bg-primary-500', 'text-white'));
-            document.querySelector('.filter-btn[onclick="filterMethods(\'all\')"]').classList.add('active', 'bg-primary-500', 'text-white');
+            // Reset filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.filter-btn[onclick="filterMethods(\'all\')"]').classList.add('active');
         });
-        
+
         // Filter functionality
         window.filterMethods = function(type) {
             // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-primary-500', 'text-white');
-                btn.classList.add('bg-white', 'border-gray-300', 'text-gray-700');
-            });
-            event.currentTarget.classList.add('active', 'bg-primary-500', 'text-white');
-            event.currentTarget.classList.remove('bg-white', 'border-gray-300', 'text-gray-700');
-
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
             
             searchInput.value = ''; // Clear search input
             
@@ -404,29 +243,8 @@
                 displayMethods(filtered);
             }
         }
-        
-        // Reset search function
-        window.resetSearch = function() {
-            searchInput.value = '';
-            displayMethods(methods);
-            filterMethods('all');
-        }
-        
-        // Scroll to top functionality
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
-            }
-        });
-        
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+
     </script>
+
 </body>
 </html>
