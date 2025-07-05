@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 طريقة تعليمية</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                        'tajawal': ['Tajawal', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
+                        'hard': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+        }
+        
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-right: 4px solid transparent; /* Changed from border-left for RTL */
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-right-color: #0ea5e9; /* Changed from border-left for RTL */
+        }
+        
+        .method-tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            flex-shrink: 0;
+        }
+        
+        .tag-p {
+            background-color: #e0f2fe;
+            color: #075985;
+        }
+        
+        .tag-a {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        
+        .tag-pa {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
+            color: #075985;
+            border: 1px solid #e0f2fe;
+        }
+        
+        .filter-btn.active {
+            background-color: #0ea5e9;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+        }
+        
+        .header-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .icon-circle {
+            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3), 0 4px 6px -2px rgba(14, 165, 233, 0.2);
+        }
+        
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem; /* Adjusted for RTL, can be right: 2rem */
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 50;
+        }
+        
+        .scroll-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .empty-state {
+            background-color: rgba(241, 245, 249, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .empty-state-icon {
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+        }
+
+        .description-list {
+            padding-right: 1.5rem;
+            list-style: disc;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up fa-lg"></i>
+    </button>
+    
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 md:px-8 py-6">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <div class="inline-flex items-center justify-center icon-circle w-20 h-20 rounded-full text-white mb-6">
+                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold font-cairo mb-3 header-gradient">50 طريقة تعليمية</h1>
+            <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto">
+                دليل شامل ومفصل لأساليب العرض والتطبيق في التصميم التعليمي، مصمم لمساعدة المعلمين والمصممين التعليميين على اختيار أفضل الطرق
+            </p>
+        </header>
+        
+        <!-- Search and Filter Section -->
+        <div class="sticky top-0 bg-white/80 backdrop-blur-sm z-10 py-4 mb-8 border-b border-gray-200">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <!-- Search Input -->
+                    <div class="relative flex-grow w-full">
+                        <input type="text" id="searchInput" placeholder="ابحث بالاسم العربي أو الإنجليزي..." 
+                               class="w-full search-input p-3 pl-12 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition text-gray-700">
+                        <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    
+                    <!-- Filter Buttons -->
+                    <div id="filter-buttons" class="flex items-center justify-center gap-2 flex-wrap w-full md:w-auto">
+                        <button class="filter-btn active px-4 py-2 rounded-xl bg-primary-500 text-white font-medium hover:bg-primary-600 transition flex items-center gap-2" onclick="filterMethods('all')">
+                            <i class="fas fa-layer-group"></i>
+                            الكل
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-xl bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition flex items-center gap-2" onclick="filterMethods('P')">
+                            <i class="fas fa-bullhorn text-blue-500"></i>
+                            طرق العرض
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-xl bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition flex items-center gap-2" onclick="filterMethods('A')">
+                            <i class="fas fa-puzzle-piece text-green-500"></i>
+                            طرق التطبيق
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Methods Counter -->
+        <div class="mb-6 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-gray-800">
+                <i class="fas fa-list-check mr-2 text-primary-600"></i>
+                الأساليب المتاحة
+            </h2>
+            <span id="methodsCount" class="text-sm bg-primary-100 text-primary-800 px-3 py-1 rounded-full font-medium">
+                50 طريقة
+            </span>
+        </div>
+        
+        <!-- Methods Grid -->
+        <div id="methodsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be injected here by JavaScript -->
+        </div>
+        
+        <!-- Not Found Message -->
+        <div id="notFoundMessage" class="empty-state text-center py-16 px-6 rounded-2xl hidden mt-8">
+            <div class="empty-state-icon inline-flex items-center justify-center w-20 h-20 rounded-full mb-6">
+                <i class="fas fa-search fa-2x text-gray-500"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-700 mb-2">لا توجد نتائج</h3>
+            <p class="text-gray-600 max-w-md mx-auto">
+                لم نتمكن من العثور على أي طرق تعليمية تطابق بحثك. حاول استخدام مصطلحات بحث مختلفة.
+            </p>
+            <button onclick="resetSearch()" class="mt-6 px-6 py-2 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition font-medium">
+                <i class="fas fa-undo mr-2"></i>
+                إعادة تعيين البحث
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 pb-6 border-t border-gray-200 text-center text-gray-500 text-sm">
+            <p>© 2024 - تم التطوير بواسطة Gemini. جميع الحقوق محفوظة.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Data for all 50 instructional methods, translated and detailed
+        const methods = [
+            { id: 1, name: 'متاهة العمل', englishName: 'Action Maze', type: 'A', icon: 'fa-sitemap', description: 'نسخة معدلة من دراسة الحالة حيث يحل المتعلمون مشكلة أو قضية عن طريق اتخاذ قرارات. قراراتهم تحدد ما سيرونه لاحقًا. توفر عواقب قراراتهم للمتعلمين رؤى وملاحظات.' },
+            { id: 2, name: 'نمذجة السلوك', englishName: 'Behavior Modeling', type: 'P', icon: 'fa-user-check', description: 'يتم عرض سلوك مرغوب فيه للمشاركين، إما من خلال عرض حي من قبل المدرب أو عبر شريط فيديو. ثم يتم تحليل السلوك ودراسته. يشيع استخدامه في تدريب المهارات الشخصية ومهارات الاتصال.' },
+            { id: 3, name: 'العصف الذهني', englishName: 'Brainstorming', type: 'P', icon: 'fa-brain', description: 'تقنية حرة لتوليد الأفكار. تتطلب المرحلة الأولى تدفقًا إبداعيًا وعفويًا للاقتراحات دون أي حكم أو تقييم. تتضمن المرحلة الثانية تحليلًا أكثر دقة لاستكشاف الأفكار وتقييم فائدتها.' },
+            { id: 4, name: 'مجموعة النقاش السريع', englishName: 'Buzz Group', type: 'P', icon: 'fa-comments', description: 'يتم تقسيم مجموعة كبيرة إلى مجموعات أصغر لإجراء مناقشة سريعة. تجتمع جميع المجموعات في وقت واحد لمدة 5-10 دقائق للتفاعل مع موضوع، أو توليد أفكار أو أسئلة، أو مناقشة قضية، إلخ.' },
+            { id: 5, name: 'دراسة الحالة', englishName: 'Case Study', type: 'A', icon: 'fa-file-alt', description: 'يُعطى المتعلمون وصفًا مكتوبًا أو شفويًا لموقف ما. يُطلب منهم، إما فرديًا أو في مجموعات، تحليل الحالة وتقديم النتائج و/أو التوصيات. تستخدم هذه الطريقة عادة لممارسة المهارات التحليلية.' },
+            { id: 6, name: 'العيادة التعليمية', englishName: 'Clinic', type: 'A', icon: 'fa-briefcase-medical', description: 'يجتمع المتعلمون لتحليل ومعالجة مشكلة معينة أو للتفاعل مع مشكلة واجهوها.' },
+            { id: 7, name: 'الندوة الحوارية', englishName: 'Colloquy', type: 'P', icon: 'fa-users', description: 'نسخة معدلة من حلقة النقاش تضم 4-8 أشخاص. نصف أعضاء اللجنة يمثلون المتعلمين والنصف الآخر هم خبراء أو أشخاص ذوو خبرة. يطرح ممثلو المتعلمين الأسئلة ويثيرون القضايا ويقدمون التعليقات ليرد عليها الخبراء.' },
+            { id: 8, name: 'اللجنة', englishName: 'Committee', type: 'PA', icon: 'fa-users-cog', description: 'مجموعة صغيرة مستمدة من مجموعة كبيرة من المتعلمين للتعامل مع مشروع أو مهمة لا يمكن للمجموعة الكبيرة التعامل معها بكفاءة. قد يكون هناك أكثر من لجنة تعمل في نفس الوقت. تقدم كل لجنة تقريرها إلى المجموعة الأكبر للحصول على التوجيه والملاحظات.' },
+            { id: 9, name: 'المقارنة والمقابلة', englishName: 'Compare & Contrast', type: 'P', icon: 'fa-balance-scale', description: 'طريقة تستخدم لتسليط الضوء على أوجه التشابه والاختلاف بين شيئين.' },
+            { id: 10, name: 'الحادثة الحرجة', englishName: 'Critical Incident', type: 'A', icon: 'fa-search', description: 'نسخة معدلة من دراسة الحالة حيث يُعطى المتعلمون بيانات غير مكتملة. من خلال تحليل الحالة وطرح الأسئلة الصحيحة، يتم إعطاؤهم البيانات الإضافية اللازمة لحل القضية.' },
+            { id: 11, name: 'النقد', englishName: 'Critique', type: 'A', icon: 'fa-gavel', description: 'يحلل المتعلمون نقاط القوة والضعف في موضوع، نظام، نهج، اقتراح، إلخ. ثم يقدمون اقتراحات أو تحسينات.' },
+            { id: 12, name: 'المناظرة', englishName: 'Debate', type: 'P', icon: 'fa-microphone-alt', description: 'يدافع متعلمان، أو فريقان من المتعلمين، عن وجهات نظر متعارضة حول قضية ما. يتناوب المتعلمون في عرض حججهم. الغرض هو استكشاف جميع جوانب القضية والتأكيد على الفوز.' },
+            { id: 13, name: 'العرض التوضيحي', englishName: 'Demonstration', type: 'P', icon: 'fa-person-chalkboard', description: 'يلاحظ المتعلمون أداء مهمة أو إجراء. قد يكون العرض حيًا أو مسجلاً مسبقًا.' },
+            { id: 14, name: 'الحوار', englishName: 'Dialogue', type: 'P', icon: 'fa-user-friends', description: 'يجري شخصان محادثة بينما يلاحظ المتعلمون الآخرون. قد يكون الأفراد في الحوار من الخبراء أو من المتعلمين المختارين. قد يقدمون وجهات نظر متعارضة أو يناقشون القضية ببساطة بطريقة مستنيرة.' },
+            { id: 15, name: 'المناقشة', englishName: 'Discussion', type: 'P', icon: 'fa-lightbulb', description: 'تبادل للآراء حول موضوع ذي اهتمام مشترك. عادة ما يدير هذه المناقشة قائد، ولكن يمكن أن تكون بدون قائد. يمكن أن تكون غير منظمة وعفوية تمامًا، أو يمكن أن تكون منظمة للغاية.' },
+            { id: 16, name: 'التمرين', englishName: 'Drill', type: 'A', icon: 'fa-dumbbell', description: 'جلسة من الممارسة المتكررة مصممة لزيادة الكفاءة، أو تحسين جودة الأداء، أو المساعدة على الاحتفاظ بالمعلومات.' },
+            { id: 17, name: 'حلقة النقاش المفتوحة', englishName: 'Expanded Panel', type: 'P', icon: 'fa-chair', description: 'هذه حلقة نقاش مع كرسي فارغ. يمكن للمتعلمين شغل الكرسي الفارغ مؤقتًا للمشاركة لفترة وجيزة في حلقة النقاش. عندما ينتهون من قول ما لديهم، يخلون الكرسي حتى يتمكن متعلم آخر من شغله.' },
+            { id: 18, name: 'الرحلة الميدانية', englishName: 'Field Trip', type: 'P', icon: 'fa-bus', description: 'يتم أخذ المتعلمين إلى البيئة التي يتم فيها أداء المهمة. يتم التخطيط للرحلة بعناية للتعلم من خلال الملاحظة وتحليل ما يتم ملاحظته. (هذه ليست مجرد جولة عادية).' },
+            { id: 19, name: 'حوض السمك', englishName: 'Fish Bowl', type: 'PA', icon: 'fa-fish', description: 'تعديل للمناقشة حيث يتم تقسيم مجموعة كبيرة إلى مجموعتين أصغر. تناقش الدائرة "الداخلية" قضية ما أو تقوم بتمرين بينما تلاحظ الدائرة "الخارجية" ثم تقدم ملاحظات أو تغذية راجعة.' },
+            { id: 20, name: 'المنتدى', englishName: 'Forum', type: 'P', icon: 'fa-comments-dollar', description: 'بعد عرض تقديمي رسمي، يناقش المتعلمون ويطرحون أسئلة حول الموضوع. قد يطرحون أسئلة على المتحدث أو يناقشون فيما بينهم. بالنسبة للمجموعات الكبيرة، قد تكون هناك حاجة إلى مدير للجلسة.' },
+            { id: 21, name: 'اللعبة التعليمية', englishName: 'Game', type: 'PA', icon: 'fa-gamepad', description: 'تُستخدم اللعبة لتقديم وتعزيز المحتوى بطريقة ممتعة. في الألعاب التعاونية، يمكن للفرق مساعدة بعضها البعض للوصول إلى منتج أو حل نهائي. إذا كانت اللعبة تنافسية، يمكن للمشاركين التنافس إما مع المدرب، أو مع بعضهم البعض، أو مع أنفسهم، أو مع جهاز كمبيوتر، أو مع فرق أخرى.' },
+            { id: 22, name: 'سلة الوارد', englishName: 'In-Basket', type: 'A', icon: 'fa-inbox', description: 'تُعطى عناصر مُعدة للمتعلمين كما لو كانت تصل في سلة الوارد. يجب على المتعلمين تحديد الأولويات، واتخاذ القرارات، والتعامل مع أي صعوبات، والاستجابة للمواعيد النهائية والضغوط، إلخ، من أجل إنجاز عبء العمل.' },
+            { id: 23, name: 'الأدوات التقييمية', englishName: 'Instruments', type: 'P', icon: 'fa-tasks', description: 'يملأ المتعلمون استبيانات أو تقييمات، لاكتساب نظرة ثاقبة حول أنفسهم أو استكشاف موضوع ما.' },
+            { id: 24, name: 'المقابلة', englishName: 'Interview', type: 'P', icon: 'fa-microphone', description: 'تُتاح للمتعلمين فرصة لإجراء مقابلة وطرح الأسئلة على شخص خبير. في بعض الأحيان، يجري شخص آخر المقابلة والمتعلمون يلاحظون فقط.' },
+            { id: 25, name: 'المختبر', englishName: 'Laboratory', type: 'A', icon: 'fa-vial', description: 'موقع تدريب يتم إعداده للسماح بالتجريب والاختبار من قبل المتعلمين. يمكن القيام بذلك للتدريب التقني والعلمي ولكن أيضًا للعلاقات الإنسانية والبرامج السلوكية المعقدة.' },
+            { id: 26, name: 'مناقشة المجموعة الكبيرة', englishName: 'Large Group Discussion', type: 'P', icon: 'fa-users-line', description: 'تبادل للآراء بين المجموعة بأكملها. قد يتم تصميمها في الدرس، وفي هذه الحالة تكون عادةً منظمة ويديرها المدرب. قد تنشأ أيضًا بشكل عفوي نتيجة لاهتمامات المشاركين.' },
+            { id: 27, name: 'المحاضرة', englishName: 'Lecture', type: 'P', icon: 'fa-chalkboard-user', description: 'عرض تقديمي شفوي مُعد حول موضوع معين. عند استخدام المحاضرات في التدريب، تأكد من أن المحتوى الذي سيتم تغطيته ليس طويلاً جدًا. بينما يريد/يتوقع المتعلمون بعض المحاضرات، تأكد من دمج المحاضرات مع طرق العرض والتطبيق الأخرى.' },
+            { id: 28, name: 'المحاضرة المصغرة', englishName: 'Lecturette', type: 'P', icon: 'fa-person-booth', description: 'طريقة عرض شفوي منظم يقدم فيها المدرب المحتوى في أجزاء تتراوح من 5 إلى 20 دقيقة. يتطلب كل جزء بعض التفاعل بين المتعلمين والمدرب. تشمل تنويعات المحاضرة المصغرة: <ul class="description-list mt-2"><li><b>مختصرة:</b> يسرد المتعلمون كل ما يعرفونه عن موضوع ما ويقدم المدرب المحتوى المفقود.</li><li><b>الربط بالرسوم:</b> يعرض المدرب صورة أو رمزًا لتمثيل فكرة/موضوع رئيسي ثم يشرح أهميته.</li><li><b>مقابلة وهمية:</b> "يقابل" مشارك متطوع المدرب باستخدام قائمة أسئلة أو نص يقدمه المدرب.</li><li><b>الاختيار من متعدد:</b> بعد أن يقدم المدرب جزءًا من المحتوى، يجيب المتعلمون على سلسلة من أسئلة الاختيار من متعدد.</li><li><b>البحث والتعلم:</b> يُعطى المتعلمون سلسلة من الأسئلة ويعملون في مجموعات صغيرة للبحث في المحتوى المقدم.</li><li><b>كارتون:</b> يعرض المدرب رسماً كاريكاتورياً يوضح لتعزيز فكرة/موضوع رئيسي.</li><li><b>ملء الفراغات:</b> يملأ المتعلمون كلمات أو عبارات قصيرة في مخطط تفصيلي للأفكار الرئيسية التي تمت تغطيتها في المحاضرة المصغرة.</li><li><b>تعاونية:</b> يوزع المدرب بطاقات مواضيع مرقمة بشكل عشوائي على المتعلمين الذين يتم استدعاؤهم لقراءتها بصوت عالٍ.</li><li><b>أمثلة/استثناءات:</b> يُطلب من المتعلمين، في مجموعات صغيرة، إنشاء مثال أو تشبيه للمحتوى المقدم أو تحديد استثناءات للقواعد أو الإجراءات.</li><li><b>رسم الخرائط الذهنية:</b> ينشئ المتعلمون تمثيلات رسومية حرة (أي خرائط ذهنية) للمحتوى المقدم ويتبادلون الخرائط مع المشاركين الآخرين.</li><li><b>الكلمات المفتاحية:</b> يكتب المدرب كلمة مفتاحية واحدة على اللوح الورقي عند تقديم كل عنصر من عناصر المحتوى.</li></ul>' },
+            { id: 29, name: 'فريق الاستماع', englishName: 'Listening Team', type: 'P', icon: 'fa-headphones', description: 'يتم تكليف مجموعة من المتعلمين بالاستماع إلى متحدث، وتدوين الملاحظات، وإعداد الأسئلة، ثم تلخيص الجلسة. قد يُسمح لهم أيضًا بطرح الأسئلة على المتحدث. يمكن لكل فريق استماع التركيز على جانب مختلف من الجلسة وتقديم تقرير عن ملاحظاتهم واستنتاجاتهم.' },
+            { id: 30, name: 'الماراثون التعليمي', englishName: 'Marathon', type: 'PA', icon: 'fa-running', description: 'يبقى المتعلمون في بيئة التعلم بشكل مستمر لفترة طويلة. عادة ما يتم ذلك في مكان منعزل لتقليل الانحرافات والسماح بالتركيز الشديد على أهداف الجلسة. عادة ما يكون مخصصًا للمهارات الشخصية والتعلم الشخصي والتقييم الذاتي.' },
+            { id: 31, name: 'التخيل الذهني', englishName: 'Mental Imagery', type: 'A', icon: 'fa-lightbulb', description: 'عملية استرخاء وتخيل نفسك وأنت تؤدي مهمة بشكل صحيح. يعد التدريب الذهني المتكرر مكملاً أو بديلاً للممارسة الفعلية.' },
+            { id: 32, name: 'الحالة المصغرة', englishName: 'Mini-Case', type: 'A', icon: 'fa-file-signature', description: 'تعديل لدراسة الحالة حيث يتم وصف موقف موجز للمتعلمين الذين يناقشون كيفية التعامل مع الحالة. تتميز بتقديم الحقائق الرئيسية فقط وبإيجاز في المناقشة. غالبًا ما تستخدم لتقديم أمثلة على المواقف والإجراءات.' },
+            { id: 33, name: 'مناقشات الجوار', englishName: 'Neighbor Discussions', type: 'P', icon: 'fa-user-plus', description: 'طريقة سريعة لخلق المشاركة والنشاط من قبل المتعلمين. يُطلب منهم التحدث إلى الشخص المجاور لهم لبضع دقائق لمناقشة قضية، أو الإجابة على سؤال، أو توليد أسئلة لطرحها.' },
+            { id: 34, name: 'حلقة النقاش', englishName: 'Panel', type: 'P', icon: 'fa-chalkboard', description: 'تجري مناقشة بين مجموعة من الخبراء بينما يلاحظ المتعلمون. في بعض الأحيان يطرح المتعلمون أسئلة بعد أن يتحدث أعضاء اللجنة. غالبًا ما تتطلب مديرًا لتوجيه التدفق.' },
+            { id: 35, name: 'مراجعة الأقران', englishName: 'Peer Review', type: 'A', icon: 'fa-users-viewfinder', description: 'يعمل المتعلمون في مجموعات صغيرة لمراجعة المحتوى المقدم مسبقًا. الغرض من مراجعة الأقران هو التحقق من فهم المعرفة و/أو الإجراءات.' },
+            { id: 36, name: 'تعليم الأقران', englishName: 'Peer Tutoring', type: 'P', icon: 'fa-hands-helping', description: 'يساعد المشاركون بعضهم البعض على التعلم تحت إشراف قائد المجموعة. كما يُستخدم لإعطاء المشاركين المتقدمين فرصة لمساعدة أقرانهم الأقل تقدمًا.' },
+            { id: 37, name: 'تمرين الممارسة', englishName: 'Practice Exercise', type: 'A', icon: 'fa-pencil-ruler', description: 'طريقة تستخدم لتعزيز مهارة. يمارس المتعلمون المهارة التي أظهرها المدرب، إما بمفردهم أو في فرق، باستخدام قائمة تحقق من الأداء.' },
+            { id: 38, name: 'السؤال والجواب', englishName: 'Question (and Answer)', type: 'P', icon: 'fa-question-circle', description: 'طريقة يغطي فيها القائد محتوى الدورة من خلال طرح سلسلة من الأسئلة. والعكس أيضًا حيث يُطلب من المتعلمين توليد وطرح الأسئلة من أجل التعلم عن الموضوع.' },
+            { id: 39, name: 'الاختبار القصير', englishName: 'Quiz', type: 'A', icon: 'fa-file-invoice', description: 'طريقة لتقييم التعلم أو إعطاء فرصة للممارسة عن طريق ملء استبيان أو اختبار.' },
+            { id: 40, name: 'فريق رد الفعل', englishName: 'Reaction Team', type: 'P', icon: 'fa-comment-dots', description: 'يتم اختيار مجموعة من 2-5 متعلمين للتفاعل مع عرض المتحدث من خلال طرح الأسئلة أو تقديم التعليقات. قد يُسمح لهم بالمقاطعة لطلب توضيح فوري.' },
+            { id: 41, name: 'القراءة', englishName: 'Reading', type: 'P', icon: 'fa-book-open', description: 'يقرأ المتعلمون محتوى الدورة أو يراجعون المواد للتحضير لجلسة جماعية.' },
+            { id: 42, name: 'التأمل', englishName: 'Reflection', type: 'P', icon: 'fa-spa', description: 'يُمنح المتعلمون وقتًا بمفردهم لمراجعة والتفكير فيما تم تعلمه، أو تقييم قابليته للتطبيق، أو التفكير في كيفية جعله يعمل في بيئتهم.' },
+            { id: 43, name: 'لعب الأدوار', englishName: 'Role Play', type: 'A', icon: 'fa-theater-masks', description: 'يمارس المتعلمون مهارة جديدة أو يطبقون المعرفة من خلال تمثيل أدوار محددة في سياق موقف واقعي. يستخدم عادة لممارسة المهارات الشخصية ومهارات الاتصال. تشمل أشكال لعب الأدوار: <ul class="description-list mt-2"><li><b>الثلاثي التقليدي:</b> يتفاعل متعلمان لممارسة مهارة بينما يلاحظ المتعلم الثالث التفاعل ويقدم ملاحظات.</li><li><b>المضاعفة:</b> يجلس متعلم آخر أو يقف خلف لاعب الدور ويعمل كـ "أنا آخر" لتوسيع أو الكشف عن المشاعر التي لم يعبر عنها اللاعب.</li><li><b>الفريق المتناوب:</b> تحدث عدة أدوار منفصلة في نفس الوقت في أجزاء مختلفة من الغرفة.</li><li><b>عكس الأدوار:</b> يتولى المتعلمون أدوار الآخرين الذين يتفاعلون معهم عادة في العمل.</li><li><b>تناوب الأدوار:</b> يتم إيقاف لعب الأدوار لفترة وجيزة حتى يتمكن اللاعبون من تبادل الأدوار قبل المتابعة.</li></ul>' },
+            { id: 44, name: 'المحاكاة', englishName: 'Simulation', type: 'A', icon: 'fa-vr-cardboard', description: 'يتم إعداد بيئة التدريب للسماح للمتعلمين بممارسة مهمة في ظل ظروف شبيهة جدًا بالوظيفة. يمكن استخدام المعدات و/أو الموقف لجعل التدريب "واقعيًا" قدر الإمكان.' },
+            { id: 45, name: 'المشهد التمثيلي', englishName: 'Skit', type: 'P', icon: 'fa-film', description: 'عرض درامي قصير يتم إعداده وتدريبه بعناية لتوضيح المبادئ أو توفير مادة للتحليل والمناقشة.' },
+            { id: 46, name: 'كتابة الملاحظات السريعة', englishName: 'Slip Writing', type: 'P', icon: 'fa-sticky-note', description: 'طريقة سريعة لتوليد الأسئلة من المتعلمين عن طريق مطالبة الجميع بكتابة سؤالهم الرئيسي على ورقة وتمريرها إلى القائد. ثم يقرأ القائد جميع الأسئلة على المجموعة ويجيب عليها أو يحيلها إلى المجموعة. يمكن استخدامها في أي وقت يرغب فيه المتعلم في طرح سؤال دون الكشف عن هويته.' },
+            { id: 47, name: 'دليل الدراسة', englishName: 'Study Guide', type: 'P', icon: 'fa-map-signs', description: 'مواد توفر خريطة للمتعلمين ليتبعوها في تعلم موضوع ما. يمكن أن تشمل أنواعًا عديدة من الأنشطة والمواد. يمكن استخدامها بشكل فردي أو في مجموعات.' },
+            { id: 48, name: 'الندوة', englishName: 'Symposium', type: 'P', icon: 'fa-person-presenting', description: 'سلسلة من المحاضرات الموجزة حول مواضيع ذات صلة يقدمها خبراء. يقدم كل متحدث جانبًا واحدًا فقط من الموضوع. غالبًا ما يلخص مدير الجلسة. في بعض الأحيان يطرح المتعلمون أسئلة بعد ذلك. طريقة منظمة ورسمية إلى حد ما.' },
+            { id: 49, name: 'المجموعة النقابية', englishName: 'Syndicate', type: 'A', icon: 'fa-object-group', description: 'يتم تقسيم المتعلمين إلى مجموعات صغيرة من 3-6 أشخاص لأداء مهمة معينة كفريق واحد.' },
+            { id: 50, name: 'ورشة العمل', englishName: 'Workshop', type: 'PA', icon: 'fa-tools', description: 'جلسة تشاركية للغاية تضع تركيزًا أكبر على تطبيق المتعلمين أكثر من عروض القائد. يعمل المتعلمون لإنتاج منتج أو حل مشكلة بتوجيه من القائد.' }
+        ];
+        
+        // DOM Elements
+        const grid = document.getElementById('methodsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const notFoundMessage = document.getElementById('notFoundMessage');
+        const methodsCount = document.getElementById('methodsCount');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        // Function to create a method card
+        function createCard(method) {
+            const typeTag = method.type.includes('P') && method.type.includes('A') ? 'PA' : method.type;
+            let typeLabel, typeClass;
+            
+            if (typeTag === 'PA') {
+                typeLabel = 'عرض وتطبيق';
+                typeClass = 'tag-pa';
+            } else if (typeTag === 'P') {
+                typeLabel = 'عرض';
+                typeClass = 'tag-p';
+            } else {
+                typeLabel = 'تطبيق';
+                typeClass = 'tag-a';
+            }
+            
+            return `
+                <div class="card bg-white p-6 rounded-xl shadow-soft flex flex-col items-start gap-4" data-name="${method.name}" data-english-name="${method.englishName}" data-type="${method.type}">
+                    <div class="flex justify-between items-start w-full gap-4">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-primary-100 text-primary-600 w-12 h-12 flex items-center justify-center rounded-full flex-shrink-0 mt-1">
+                                <i class="fas ${method.icon} fa-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 font-cairo">${method.englishName}</h3>
+                                <p class="text-md text-primary-700 font-semibold">(${method.name})</p>
+                            </div>
+                        </div>
+                        <span class="method-tag ${typeClass}">${typeLabel}</span>
+                    </div>
+                    <div class="text-gray-600 leading-relaxed text-sm">${method.description}</div>
+                </div>
+            `;
+        }
+        
+        // Function to display methods
+        function displayMethods(methodsToDisplay) {
+            grid.innerHTML = methodsToDisplay.map(createCard).join('');
+            methodsCount.textContent = `${methodsToDisplay.length} طريقة`;
+            
+            if(methodsToDisplay.length === 0) {
+                notFoundMessage.classList.remove('hidden');
+                grid.classList.add('hidden');
+            } else {
+                notFoundMessage.classList.add('hidden');
+                grid.classList.remove('hidden');
+            }
+        }
+        
+        // Initial display
+        displayMethods(methods);
+        
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = methods.filter(method => 
+                method.name.toLowerCase().includes(searchTerm) || 
+                method.englishName.toLowerCase().includes(searchTerm) ||
+                method.description.toLowerCase().includes(searchTerm)
+            );
+            displayMethods(filtered);
+            
+            // Reset filter buttons to 'all'
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active', 'bg-primary-500', 'text-white'));
+            document.querySelector('.filter-btn[onclick="filterMethods(\'all\')"]').classList.add('active', 'bg-primary-500', 'text-white');
+        });
+        
+        // Filter functionality
+        window.filterMethods = function(type) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary-500', 'text-white');
+                btn.classList.add('bg-white', 'border-gray-300', 'text-gray-700');
+            });
+            event.currentTarget.classList.add('active', 'bg-primary-500', 'text-white');
+            event.currentTarget.classList.remove('bg-white', 'border-gray-300', 'text-gray-700');
+
+            
+            searchInput.value = ''; // Clear search input
+            
+            if (type === 'all') {
+                displayMethods(methods);
+            } else {
+                const filtered = methods.filter(method => method.type.includes(type));
+                displayMethods(filtered);
+            }
+        }
+        
+        // Reset search function
+        window.resetSearch = function() {
+            searchInput.value = '';
+            displayMethods(methods);
+            filterMethods('all');
+        }
+        
+        // Scroll to top functionality
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
